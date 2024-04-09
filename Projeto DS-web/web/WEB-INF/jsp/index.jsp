@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//PT-BR"
     "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -28,7 +28,10 @@
             </div>
             <br>
             <br>
+            <div class="buttons">
             <a href="pages/pagina1jsp.jsp"><button id="entrarTask">Entrar</button></a>
+            <a href="pages/paginacadastro.jsp"><button id="entrarTask">Cadastrar</button></a>
+            </div>
         </div>
     </div>
         </main>
