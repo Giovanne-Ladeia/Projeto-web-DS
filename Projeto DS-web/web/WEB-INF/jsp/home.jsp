@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="./../styles/communscss.css" rel="stylesheet" type="text/css"/>
+        <link href="./styles/communscss.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
         
     </head>
@@ -20,6 +20,11 @@
         
         <main>
             <h2>main</h2>
+            <div class="buttons">
+                <a href="./categoria"><button id="entrarTask">Categoria</button></a>
+                <a href="./produto"><button id="entrarTask">Produto</button></a>
+                <a href="./login"><button id="entrarTask">Retornar ao login</button></a>
+            </div>
         </main>
         
         <footer>

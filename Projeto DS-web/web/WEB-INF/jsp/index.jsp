@@ -29,8 +29,8 @@
             <br>
             <br>
             <div class="buttons">
-            <a href="pages/pagina1jsp.jsp"><button id="entrarTask">Entrar</button></a>
-            <a href="pages/paginacadastro.jsp"><button id="entrarTask">Cadastrar</button></a>
+                <a href="./home"><button id="entrarTask">Entrar</button></a>
+                <a href="./cadastrar"><button id="entrarTask">Cadastrar</button></a>
             </div>
         </div>
     </div>

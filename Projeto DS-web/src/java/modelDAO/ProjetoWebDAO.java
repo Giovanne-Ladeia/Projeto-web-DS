@@ -292,7 +292,7 @@ public class ProjetoWebDAO {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
            
-            stmt = conexao.prepareStatement("UPDATE Produtos SET nome_estoque = ?, categoria_estoque = ?, preco_estoque = ?, quantidade_estoque = ? WHERE idEstoque = ?");
+            stmt = conexao.prepareStatement("UPDATE estoque SET nome_estoque = ?, categoria_estoque = ?, preco_estoque = ?, quantidade_estoque = ? WHERE idEstoque = ?");
             stmt.setString(1, atualizarestoque.getNome_estoque());
             stmt.setString(2, atualizarestoque.getCategoria_estoque());
             stmt.setInt(3, atualizarestoque.getPreco_estoque());
@@ -314,11 +314,12 @@ public class ProjetoWebDAO {
             Connection conexao = Conexao.conectar();
             PreparedStatement stmt = null;
            
-            stmt = conexao.prepareStatement("UPDATE Produtos SET nome_carrinho = ?, categoria_carrinho = ?, descricao_carrinho = ?, preco_carrinho = ?, quantidade_carrinho = ? WHERE idCarrinho = ?");
+            stmt = conexao.prepareStatement("UPDATE carrinho SET nome_carrinho = ?, categoria_carrinho = ?, descricao_carrinho = ?, preco_carrinho = ?, quantidade_carrinho = ? WHERE idCarrinho = ?");
             stmt.setString(1, atualizarcarrinho.getNome_estoque());
             stmt.setString(2, atualizarcarrinho.getCategoria_estoque());
-            stmt.setInt(3, atualizarcarrinho.getPreco_estoque());
-            stmt.setInt(4, atualizarcarrinho.getQuantidade_estoque());
+            stmt.setString(3, atualizarcarrinho.getDescricao_carrinho());
+            stmt.setInt(4, atualizarcarrinho.getPreco_estoque());
+            stmt.setInt(5, atualizarcarrinho.getQuantidade_estoque());
            
            
             stmt.executeUpdate();

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="./../styles/cadastro.css" rel="stylesheet" type="text/css"/>
+        <link href="./styles/cadastro.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body>
@@ -35,8 +35,8 @@
                 <br>
                 <br>
                 <div class="buttons">
-                    <a href="../redirect.jsp"><button id="entrarTask">Voltar</button></a>
-                    <a href="../pages/pagina1jsp.jsp"><button id="entrarTask">Confirmar</button></a>
+                    <a href="./login"><button id="entrarTask">Voltar</button></a>
+                    <a href="./home"><button id="entrarTask">Confirmar</button></a>
                 </div>
             </div>
            </div>
