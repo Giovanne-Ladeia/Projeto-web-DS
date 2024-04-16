@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.ProjetoWebbean;
+import modelDAO.ProjetoWebDAO;
 
 /**
  *
@@ -49,6 +51,18 @@ String pageHome = "/WEB-INF/jsp/paginacadastro.jsp";
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        String url = request.getServletPath();
+        if(url.equals("/cadastrar")){
+            ProjetoWebbean user = new ProjetoWebbean();
+            ProjetoWebDAO cad = new ProjetoWebDAO();
+            
+            user.setNome(request.getParameter("taskUser"));
+            user.setSenha(request.getParameter("taskSenha"));
+            user.setEmail(request.getParameter("taskEmail"));
+            user.setTelefone(request.getParameter("taskTele"));
+            user.setCpf(request.getParameter("taskCPF"));
+            
+        }
     }
 
     /**

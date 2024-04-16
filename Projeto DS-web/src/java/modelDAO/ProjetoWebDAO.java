@@ -410,4 +410,32 @@ public class ProjetoWebDAO {
             e.printStackTrace();
     }
     }
+    public ProjetoWebbean validaUser(ProjetoWebbean user) {
+        ProjetoWebbean usuarioValido = new ProjetoWebbean();
+        try {
+            Connection con = Conexao.conectar();
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+            
+            stmt = con.prepareStatement("SELECT * FROM Usuario WHERE nome = ? AND senha = ?");
+            stmt.setString(1, user.getNome());
+            stmt.setString(2, user.getSenha());
+            rs = stmt.executeQuery();
+            
+            if(rs.next()) {
+                usuarioValido.setIdUsuario(rs.getInt("idUsuario"));
+                usuarioValido.setNome(rs.getString("nome"));
+                usuarioValido.setSenha(rs.getString("senha"));
+            }
+            
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            usuarioValido.setIdUsuario(0);
+            usuarioValido.setNome("");
+        }
+        return usuarioValido;
+    }
 }

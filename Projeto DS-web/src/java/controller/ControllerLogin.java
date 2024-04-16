@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.ProjetoWebbean;
+import modelDAO.ProjetoWebDAO;
 
 /**
  *
@@ -30,7 +32,7 @@ public class ControllerLogin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-String nextPage = "/WEB-INF/jsp/index.jsp";
+        String nextPage = "/WEB-INF/jsp/index.jsp";
         
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
         dispatcher.forward(request, response);
@@ -48,7 +50,38 @@ String nextPage = "/WEB-INF/jsp/index.jsp";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String url = request.getServletPath();
+        
+        if (url.equals("/logar")) {
+            String nextPage = "/WEB-INF/jsp/home.jsp";
+            ProjetoWebbean user = new ProjetoWebbean();
+            ProjetoWebDAO valida = new ProjetoWebDAO();
+
+            user.setNome(request.getParameter("username"));
+            user.setSenha(request.getParameter("password"));
+            System.out.println(user.getNome());
+            
+            try {
+                ProjetoWebbean userAutenticado = valida.validaUser(user);
+                
+                if (userAutenticado != null && !userAutenticado.getNome().isEmpty()) {
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                    dispatcher.forward(request, response);
+                } else {
+                    nextPage = "/WEB-INF/jsp/index.jsp";
+                    request.setAttribute("errorMessage", "Usuário ou senha inválidos");
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                    dispatcher.forward(request, response);
+                }
+            } catch (Exception e) {
+                nextPage = "/WEB-INF/jsp/index.jsp";
+                request.setAttribute("errorMessage", "Usuário ou senha inválidos");
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextPage);
+                dispatcher.forward(request, response);
+            }
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**
